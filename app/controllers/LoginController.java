@@ -16,9 +16,9 @@ public class LoginController extends Controller {
 
 	//INICIO DA DECLARACAO DE VARIAVEIS
 	private static GenericDAO dao = new GenericDAOImpl();
-	private static final String CADASTRO = new String("Cadastro - Viagens CsF");
-	private static final String LOGIN = new String("Login - Viagens CsF");
-	private static final String PRINCIPAL = new String("Principal - Viagens CsF");
+	private static final String CADASTRO = new String("Cadastro - Vamos Estudar Física Moderna");
+	private static final String LOGIN = new String("Login - Vamos Estudar Física Moderna");
+	private static final String PRINCIPAL = new String("Principal - Vamos Estudar Física Moderna");
 	private static final Form<Cadastro> FORM_CADASTRO = Form.form(Cadastro.class);
 	private static final Form<Login> FORM_LOGIN = Form.form(Login.class);
 	//FIM DA DECLARACAO DE VARIAVIS

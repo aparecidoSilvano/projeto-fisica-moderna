@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-sm-6 col-md-4 col-md-offset-4">
 				<div class="account-wall">
-					<h1 class="text-center login-title">Insira os dados para se Cadastrar no Viagens CsF</h1>
+					<h1 class="text-center login-title">Para se cadastrar insira os seus dados</h1>
 					<br>
 					
 					<img class="profile-img" src="@routes.Assets.at("images/user.png")" alt="">
@@ -51,32 +51,6 @@
 			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		$(document).ready(
-				function() {
-					$(document).mousemove(
-							function(e) {
-								TweenLite.to($('body'), .5, {
-									css : {
-										backgroundPosition : ""
-												+ parseInt(event.pageX / 8)
-												+ "px "
-												+ parseInt(event.pageY / '12')
-												+ "px, "
-												+ parseInt(event.pageX / '15')
-												+ "px "
-												+ parseInt(event.pageY / '15')
-												+ "px, "
-												+ parseInt(event.pageX / '30')
-												+ "px "
-												+ parseInt(event.pageY / '30')
-												+ "px"
-									}
-								});
-							});
-				});
-	</script>
 
 </body>
 </html>
