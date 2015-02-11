@@ -100,7 +100,7 @@ public class Usuario {
 	}
 
 	/**
-	 * Metodo define uma lista de viagens para o usuario.
+	 * Metodo a lista de anotações do usuário.
 	 * @param viagens
 	 */
 	public void setAnotacoes(List<Anotacao> viagens) {

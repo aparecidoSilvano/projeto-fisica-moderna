@@ -1,7 +1,89 @@
 @(message: String)
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Física moderna</title>
 
-@main("Welcome to Play") {
+href="@routes.Assets.at("stylesheets/bootstrap.min.css")"
 
-    @play20.welcome(message, style = "Java")
+<!-- Usados no templt -->
+<link href="@routes.Assets.at("stylesheets/bootstrap.min.css")" rel="stylesheet" media="screen">
+<link href="@routes.Assets.at("stylesheets/font-awesome.min.css")" rel="stylesheet">
+<link href="@routes.Assets.at("stylesheets/prettyPhoto.css")" rel="stylesheet">
+<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
+</head>
+<!--/#head-->
 
-}
+<body data-spy="scroll" data-target="#navbar" data-offset="0">
+	<header id="header" role="banner">
+		<div class="container">
+			<div id="navbar" class="navbar navbar-default">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"></a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#main-slider"><i
+								class="icon-home"></i></a></li>
+						<li><a href="#main">Aulas</a></li>
+						<li><a href="#about">Sobre</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!--/#header-->
+	<section id="#main">
+		<div class="container">
+			<div class="box">
+				<div class="center">
+					<h2>Selecione o conteúdo</h2>
+					<p class="lead">Selecione o conteúdo e mão à obra!</p>
+				</div>
+			</div>
+			<!--/.box-->
+		</div>
+		<!--/.container-->
+	</section>
+	<!--/#main-->
+	<section id="about">
+		<div class="container">
+			<div class="box last">
+				<div class="center">
+					<h2>Desenvolvedores</h2>
+					<h3>Brendha Cruz</h3>
+					<h3>José Aparecido</h3>
+					<h2>Professor</h3>
+					<h3>Igo</h3>
+					<p>Projeto desenvolvido na disciplina de Física Moderna - 2014.2</p>
+				</div>
+			</div>
+		</div>
+		<!--/.container-->
+	</section>
+	<!--/#contact-->
+
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					&copy; 2013 <a target="_blank" href="http://shapebootstrap.net/"
+						title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>.
+					All Rights Reserved.
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/#footer-->
+
+</body>
+</html>
