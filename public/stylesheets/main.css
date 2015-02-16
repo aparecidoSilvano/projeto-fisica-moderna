@@ -3,6 +3,18 @@ body {
   background: #e5e5e5;
   color: #999;
 }
+
+.intro-header {
+	background-color: gray;
+	background-attachment: scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	margin-bottom: 50px
+}
+
+
 h1,
 h2,
 h3,

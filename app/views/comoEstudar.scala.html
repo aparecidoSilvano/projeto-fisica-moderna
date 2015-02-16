@@ -1,19 +1,19 @@
-@(message: String)
+@()
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Física moderna</title>
+<title>Como Estudar</title>
+
 
 <!-- Usados no templt -->
 <link href="@routes.Assets.at("stylesheets/bootstrap.min.css")" rel="stylesheet" media="screen">
 <link href="@routes.Assets.at("stylesheets/index.css")" rel="stylesheet">
 <link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
 </head>
-<!--/#head-->
-
 <body>
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -22,7 +22,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="@routes.LoginController.index">Home</a></li>
+					<li><a href="@routes.Application.index">Home</a></li>
 					<li><a href="@routes.AulasController.index">Aulas</a></li>
 					<li><a href="@routes.Application.comoEstudar">Como estudar?</a></li>
 					<li><a href="@routes.Application.sobre">Sobre</a></li>
@@ -35,19 +35,29 @@
 
 	<!-- Page Header -->
 	<!-- Set your background image for this header on the line below. -->
-	<header class="intro-header" style="background-image: url('@routes.Assets.at("images/home-bg.jpg")')">
+	<header class="intro-header"
+		style="background-image: url('@routes.Assets.at("images/image-bg.png")')">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-					<div class="site-heading">
-						<h1>Olá!</h1>
-						<h1>Vamos estudar?</h1>
-						<hr class="small">
-						<span class="subheading">algum texto motivacional aqui</span>
+					<div class="page-heading">
+						<h1 style="color: white; size: 18">Algumas dicas para você aprender a estudar</h1>
+<!-- 						<hr class="small"> -->
+<!-- 						<span class="subheading">Bons estudos!</span> -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</header>
+
+	<!-- Main Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<p>Fazer os textos ensino o cara estudar.</p>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
