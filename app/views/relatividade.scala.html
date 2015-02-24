@@ -1,0 +1,143 @@
+@(message: String)
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Aulas</title>
+
+
+<!-- Usados no templt -->
+<link href="@routes.Assets.at("stylesheets/bootstrap.min.css")" rel="stylesheet" media="screen">
+<link href="@routes.Assets.at("stylesheets/index.css")" rel="stylesheet">
+<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
+</head>
+<!--/#head-->
+<body>
+	<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="@routes.Application.index">Home</a></li>
+					<li><a href="@routes.AulasController.index">Aulas</a></li>
+					<li><a href="@routes.Application.comoEstudar">Como
+							estudar?</a></li>
+					<li><a href="@routes.Application.sobre">Sobre</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Page Header -->
+	<!-- Set your background image for this header on the line below. -->
+	<header class="intro-header"
+		style="background-image: url('@routes.Assets.at("images/image-bg.png")')">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<div class="page-heading">
+						<h2 style="color: white; size: 18s">UNIDADE I - RELATIVIDADE: 
+                       <br>
+						<h3 style="color: white; size: 12s">Relatividade Newtoniana. 
+						A Experiência de MichelsonMorley. 
+						Postulados de Einstein. 
+						A transformação de Lorentz. 
+						Sincronização dos Relógios e Simultaneidade. 
+						O Efeito Doppler. O Paradoxo dos Gêmeos. 
+						A Transformação de Velocidades. 
+						Momento Relativístico. 
+						Energia Relativística. 
+						Relatividade Geral.</h3></h2>
+						<hr class="small">
+						<span class="subheading">Inicie o crônometro e decida quantas
+						horas de estudo você didicará a este contúdo!</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	
+		<!-- aqui inicia o código para o cronometro-->
+			<script>
+				function formatatempo(segs) {
+					min = 0;
+					hr = 0;
+					/*
+					if hr < 10 then hr = "0"&hr
+					if min < 10 then min = "0"&min
+					if segs < 10 then segs = "0"&segs
+					*/
+					while(segs>=60) {
+					 if (segs >=60) {
+					  segs = segs-60;
+					  min = min+1;
+					 }
+					}
+								
+				   while(min>=60) {
+					if (min >=60) {
+					 min = min-60;
+					 hr = hr+1;
+					}
+				   }
+								
+				  if (hr < 10) {hr = "0"+hr}
+				  if (min < 10) {min = "0"+min}
+				  if (segs < 10) {segs = "0"+segs}
+				  fin = hr+":"+min+":"+segs
+				  return fin;
+				  }
+				  var segundos = 0; //inicio do cronometro
+				  function conta() {
+				  segundos++;
+				  document.getElementById("counter").innerHTML = formatatempo(segundos);
+				  }
+								
+				  function inicia(){
+				  interval = setInterval("conta();",1000);
+				  }
+								
+				  function para(){
+				  clearInterval(interval);
+				  }
+								
+				  function zera(){
+				  clearInterval(interval);
+				  segundos = 0;
+				  document.getElementById("counter").innerHTML = formatatempo(segundos);
+				  }
+			  </script>
+								
+							<br>
+							<body>
+							<center><span id="counter">00:00:00</span><br>
+							<input type="button" class="btn btn-primary" value="Parar" onclick="para();">
+						    <input type="button" class="btn btn-primary" value="Iniciar" onclick="inicia();"> 
+							<input type="button" class="btn btn-primary" value="Zerar" onclick="zera();">
+							</body>
+						
+						<br>
+						
+						<br>
+					
+						<!-- Main Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<p>Conteúdo para Unidade I</p>
+				<iframe src="https://docs.google.com/presentation/d/1l0WJYQFWocd_AKcUlma2I68lj3s-AdWJNZ0l475_DeM/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+			</div>
+		</div>
+	</div>
+						<br>
+						<br>
+
+</body>
+</html>

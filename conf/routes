@@ -15,6 +15,7 @@ GET		/logout				        controllers.LoginController.logout()
 
 # Aulas page
 GET     /aulas                      controllers.AulasController.index()
+GET     /relatividade               controllers.AulasController.relatividade()
 
 # Ir para a pagina principal
 GET		/index						controllers.Application.index()

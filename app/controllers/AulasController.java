@@ -14,4 +14,7 @@ public class AulasController extends Controller {
     public static Result index() {
         return ok(views.html.aulas.render("dsds"));
     }
+    public static Result relatividade() {
+        return ok(views.html.relatividade.render("dsds"));
+    }
 }
