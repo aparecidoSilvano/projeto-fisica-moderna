@@ -17,4 +17,10 @@ public class AulasController extends Controller {
     public static Result relatividade() {
         return ok(views.html.relatividade.render("dsds"));
     }
+    public static Result teoriaquantica() {
+        return ok(views.html.teoriaquantica.render("dsds"));
+    }
+    public static Result mecanicaquantica() {
+        return ok(views.html.mecanicaquantica.render("dsds"));
+    }
 }
