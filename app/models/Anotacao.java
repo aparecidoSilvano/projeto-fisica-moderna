@@ -21,20 +21,27 @@ public class Anotacao {
 	@GeneratedValue
 	@Column(name = "ID_NOTA")
 	private Long id;
-	
-	@Column(name = "TITULO_NOTA")
-	private String titulo;
 
 	@Column(name = "CORPO_NOTA")
 	private String corpo;
-
+	
+	@Column(name = "ESTAGIO")
+	private int ESTAGIO;
+	
 	public Anotacao() {
 		super();
+		corpo = "";
+		ESTAGIO = 0;
 	}
 	
-	public Anotacao(final String titulo, String corpo) {
-		this.titulo = titulo;
+	public Anotacao(final String corpo) {
 		this.corpo = corpo;
+		ESTAGIO = 0;
+	}
+	
+	public Anotacao(final String corpo, int estagio) {
+		this.corpo = corpo;
+		ESTAGIO = estagio;
 	}
 
 	public Long getId() {
@@ -45,14 +52,6 @@ public class Anotacao {
 		this.id = id;
 	}
 
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
 	public String getCorpo() {
 		return corpo;
 	}
@@ -60,14 +59,33 @@ public class Anotacao {
 	public void setCorpo(String corpo) {
 		this.corpo = corpo;
 	}
+
+	public int getEstagio() {
+		return ESTAGIO;
+	}
+
+	public void setEstagio(int estagio) {
+		ESTAGIO = estagio;
+	}
 	
+	public int getTipoPrimeiroEstagio(){
+		return ESTAGIO;
+	}
+	
+	public Estagio getTipoSegundoEstagio(){
+		return Estagio.SEGUNDO;
+	}
+	
+	public Estagio getTipoTerceiroEstagio(){
+		return Estagio.TERCEIRO;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((corpo == null) ? 0 : corpo.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
 
@@ -90,11 +108,12 @@ public class Anotacao {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (titulo == null) {
-			if (other.titulo != null)
-				return false;
-		} else if (!titulo.equals(other.titulo))
-			return false;
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return "Anotacao [id=" + id + ", corpo=" + corpo + "]";
+	}
+
 }

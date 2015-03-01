@@ -2007,6 +2007,13 @@ textarea.input-lg {
 	padding-left: 0
 }
 
+.btn-block-slide {
+	display: block;
+	width: 90%;
+	padding-right: 0;
+	padding-left: 0
+}
+
 .btn-block+.btn-block {
 	margin-top: 5px
 }

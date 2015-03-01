@@ -1,4 +1,4 @@
-@(message: String)
+@(usuario:models.Usuario)
 <html>
 <head>
 <meta charset="utf-8">
@@ -13,6 +13,7 @@
 <link href="@routes.Assets.at("stylesheets/index.css")" rel="stylesheet">
 <link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
 </head>
+
 <!--/#head-->
 <body>
 	<!-- Navigation -->
@@ -22,10 +23,9 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="@routes.Application.index">Home</a></li>
-					<li><a href="@routes.AulasController.index">Aulas</a></li>
-					<li><a href="@routes.Application.comoEstudar">Como
-							estudar?</a></li>
+					<li><a href="@routes.LoginController.index">Home</a></li>
+					<li><a href="@routes.LoginController.aulasIndex">Aulas</a></li>
+					<li><a href="@routes.Application.comoEstudar">Como estudar?</a></li>
 					<li><a href="@routes.Application.sobre">Sobre</a></li>
 				</ul>
 			</div>
@@ -115,77 +115,62 @@
 				  }
 			  </script>
 
-	<!-- Main Content -->
-	<center><div id="slide">
-		<!-- 		"col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" -->
-		<p>Conteúdo para Unidade I</p>
-		<iframe
-			src="https://docs.google.com/presentation/d/1l0WJYQFWocd_AKcUlma2I68lj3s-AdWJNZ0l475_DeM/embed?start=false&loop=false&delayms=3000"
-			frameborder="0" width="960" height="749" allowfullscreen="true"
-			mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-			<br>
-			<br>
-			<br>
-			<br>
-	</div></center>
-
-	<div id="anotacao">
-		<div>
-			<span id="counter">00:00:00</span> <br> 
-			<input type="button" class="btn btn-primary" value="Parar" onclick="para();">
-			<input type="button" class="btn btn-primary" value="Iniciar" onclick="inicia();">
-			<input type="button" class="btn btn-primary" value="Zerar" onclick="zera();">
+	<div class="conteudo">
+		<div class="fixed">
+			<iframe
+				src="https://docs.google.com/presentation/d/1l0WJYQFWocd_AKcUlma2I68lj3s-AdWJNZ0l475_DeM/embed?start=false&loop=false&delayms=3000"
+				width="960" height="749"></iframe>
 		</div>
-		
-		<form method="POST">
-			<div id="dynamicInput">
-				Anotação 1<br>
-				<textarea name="myTextAreas[]" rows="10" cols="30"></textarea>
+		<div class="flex-item">
+			<div>
+				<span id="counter">00:00:00</span> <br>
+				<input type="button"
+					class="btn btn-primary" value="Parar" onclick="para();">
+				<input
+					type="button" class="btn btn-primary" value="Iniciar"
+					onclick="inicia();"> 
+				<input type="button"
+					class="btn btn-primary" value="Zerar" onclick="zera();">
+				<br>
+				<br>
 			</div>
-			<input type="button" value="Nova anotação"
-				onClick="addInput('dynamicInput');">
-		</form>
+			<form method="post"
+				action="@routes.AulasController.savarNotasPrimeiroEstagio(usuario.getEmail())">
+				<div id="dynamicInput">
+					@if(usuario.getAnotacoes().isEmpty()){
+					<textarea name="notas[]" rows="10" cols="30"></textarea>
+					}else{ @for(anotacao <- usuario.getAnotacoes()){
+					@if(anotacao.getEstagio() == 1){
+						<textarea name="notasDoUsuario[]" rows="10" cols="30">@anotacao.getCorpo()</textarea>
+					} }
+					<!-- nova anotação para o usuario -->
+					<textarea name="notas[]" rows="10" cols="30"></textarea>
+					}
+				</div>
+				<input class="btn btn-sm btn-link btn-block-slide" style="width: 90%" type="button" value="Nova anotação"
+					onClick="addInput('dynamicInput', '');">
+				<button class="btn btn-sm btn-primary btn-block-slide" type="submit">Salvar</button>
+			</form>
+		</div>
 	</div>
-
-	<script>
-var counter = 1;
-var limit = 10;
-function addInput(divName){
-     if (counter == limit)  {
-          alert("Número maximo de anotacões " + counter + " inputs");
-     }
-     else {
-          var newdiv = document.createElement('div');
-          newdiv.innerHTML = "Anotação " + (counter + 1) + " <br><textarea name='myTextAreas[]' rows='10' cols='30'>type here...</textarea>";
-          document.getElementById(divName).appendChild(newdiv);
-          counter++;
-     }
+<script>
+function addInput(divName, text){
+	var newdiv = document.createElement('div');
+	newdiv.innerHTML = "<textarea name='notas[]' rows='10' cols='30'>" + text + "</textarea>";
+    document.getElementById(divName).appendChild(newdiv);
 }
 </script>
-	<style type="text/css">
+
+<style type="text/css">
 textarea {
-	background: url('@routes.Assets.at("images/paper-background.jpg")');
-	width: 200px;
+	background: repeat center
+		url('@routes.Assets.at("images/paper-background.jpg")');
+	width: 310px;
 	height: 150px;
 	font: normal 14px verdana;
 	line-height: 25px;
 	padding: 2px 10px;
 	border: solid 1px #ddd;
-}
-
-#anotacao {
-	width: 350px;
-	height: 800px;
-	float: right;
-	overflow-y: auto;
-}
-
-#slide {
-	width: 960px;
-	height: 750px;
-	left: 10px;
-	right: 10px;
-	float: left;
 }
 </style>
 

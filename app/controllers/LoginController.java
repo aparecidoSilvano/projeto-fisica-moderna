@@ -21,6 +21,7 @@ public class LoginController extends Controller {
 	private static final String PRINCIPAL = new String("Principal - Vamos Estudar Física Moderna");
 	private static final Form<Cadastro> FORM_CADASTRO = Form.form(Cadastro.class);
 	private static final Form<Login> FORM_LOGIN = Form.form(Login.class);
+	private static Usuario usuario;
 	//FIM DA DECLARACAO DE VARIAVIS
 	
 	/**
@@ -33,14 +34,23 @@ public class LoginController extends Controller {
 		if(session("email") == null){
 			return ok(login.render(LOGIN, FORM_LOGIN));
 		}else{
-			Usuario usuario = getUser(session("email"));
+			usuario = getUser(session("email"));
 			if(usuario == null){
 				return ok(login.render(LOGIN, FORM_LOGIN));
 			}
-//			return ok(index.render(PRINCIPAL, usuario));
-			return ok(index.render(PRINCIPAL));
+			return ok(index.render(usuario));
 		}
 	}
+	
+	public static Result aulasIndex() {
+//		return ok(index.render(usuario));
+		return ok(aulas.render(usuario));
+	}
+	
+	public static Usuario getUser() {
+		return usuario;
+	}
+	
 	
 	/**
 	 * Metodo chama a tela de Login
@@ -73,10 +83,8 @@ public class LoginController extends Controller {
 			return badRequest(cadastroDeUsuario.render(CADASTRO, cadastroForm));
 		}
 		try {
-			
 			Usuario user = criarUser(cadastroForm);
 			salvarUsuario(user);
-			
 		} catch (Exception e) {
 			flash("success", e.getMessage());
 			return badRequest(cadastroDeUsuario.render(CADASTRO, cadastroForm));

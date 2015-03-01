@@ -3,6 +3,27 @@
  * Copyright 2014 Start Bootstrap
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
+ 
+/*
+	Sobre Relacionados com o conteúdo das aulas.
+*/
+.conteudo {
+	width: 98%;
+	margin: 0 auto;
+	display: flex;
+}
+
+.fixed {
+	width: 960px;
+	margin-right: 0.8%;
+}
+
+.flex-item {
+	height: 750px;
+	overflow-y: auto;
+	flex-grow: 1;
+}
+
 body {
 	font-family: Lora, 'Times New Roman', serif;
 	font-size: 20px;

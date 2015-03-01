@@ -1,4 +1,6 @@
-@(message: String)
+@(usuario:models.Usuario)
+
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -23,7 +25,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="@routes.LoginController.index">Home</a></li>
-					<li><a href="@routes.AulasController.index">Aulas</a></li>
+					<li><a href="@routes.LoginController.aulasIndex">Aulas</a></li>
 					<li><a href="@routes.Application.comoEstudar">Como estudar?</a></li>
 					<li><a href="@routes.Application.sobre">Sobre</a></li>
 				</ul>
@@ -40,7 +42,7 @@
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 					<div class="site-heading">
-						<h1 style="color: white;">Olá!</h1>
+						<h1 style="color: white;">Olá @usuario.getNome()!</h1>
 						<h1 style="color: white;">Vamos estudar?</h1>
 						<hr class="small">
 						<span class="subheading">algum texto motivacional aqui</span>

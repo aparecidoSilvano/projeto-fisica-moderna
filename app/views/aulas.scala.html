@@ -1,4 +1,5 @@
-@(message: String)
+@(usuario:models.Usuario)
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -22,14 +23,13 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="@routes.Application.index">Home</a></li>
-					<li><a href="@routes.AulasController.index">Aulas</a></li>
-					<li><a href="@routes.Application.comoEstudar">Como
-							estudar?</a></li>
+					<li><a href="@routes.LoginController.index">Home</a></li>
+					<li><a href="@routes.LoginController.aulasIndex">Aulas</a></li>
+					<li><a href="@routes.Application.comoEstudar">Como estudar?</a></li>
 					<li><a href="@routes.Application.sobre">Sobre</a></li>
-					<li><a href="@routes.AulasController.relatividade">Unidade I</a></li>
-					<li><a href="@routes.AulasController.teoriaquantica">Unidade II</a></li>
-					<li><a href="@routes.AulasController.mecanicaquantica">Unidade III e IV</a></li>
+					<li><a href="@routes.AulasController.relatividade(usuario.getEmail())">Unidade I</a></li>
+					<li><a href="@routes.AulasController.teoriaquantica(usuario.getEmail())">Unidade II</a></li>
+					<li><a href="@routes.AulasController.mecanicaquantica(usuario.getEmail())">Unidade III e IV</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

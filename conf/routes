@@ -14,13 +14,14 @@ POST	/login				        controllers.LoginController.autenticar()
 GET		/logout				        controllers.LoginController.logout()
 
 # Aulas page
-GET     /aulas                      controllers.AulasController.index()
-GET     /relatividade               controllers.AulasController.relatividade()
-GET     /teoriaquantica             controllers.AulasController.teoriaquantica()
-GET     /mecanicaquantica           controllers.AulasController.mecanicaquantica()
+GET     /aulas		                controllers.LoginController.aulasIndex()
+GET     /relatividade/         		controllers.AulasController.relatividade(email:String)
+POST	/relatividade/notes			controllers.AulasController.savarNotasPrimeiroEstagio(email:String)
+GET     /teoriaquantica             controllers.AulasController.teoriaquantica(email:String)
+POST	/teoriaquantica/notes		controllers.AulasController.savarNotasSegundoEstagio(email:String)
+GET     /mecanicaquantica           controllers.AulasController.mecanicaquantica(email:String)
+POST	/mecanicaquantica/notes		controllers.AulasController.savarNotasTerceiroEstagio(email:String)
 
-# Ir para a pagina principal
-GET		/index						controllers.Application.index()
 
 # Pagina: como estudar
 GET		/comoEstudar				controllers.Application.comoEstudar()

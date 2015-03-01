@@ -5,17 +5,19 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.google.common.base.Objects;
+
+import models.dao.GenericDAO;
 import play.data.format.Formats.NonEmpty;
 import play.data.validation.Constraints.Email;
 import play.data.validation.Constraints.MaxLength;
 import play.data.validation.Constraints.Required;
-
-import com.google.common.base.Objects;
 
 /**
  * Classe Representa um Usuario do Sistema.
@@ -58,7 +60,7 @@ public class Usuario {
 	@MaxLength(value = MAX_LENGTH)
 	private String senha;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Anotacao> anotacoes = new ArrayList<Anotacao>();
 	
 	/**
@@ -91,22 +93,52 @@ public class Usuario {
 	 * @param senha - senha do usuario
 	 * @throws Exception
 	 */
-	public Usuario(String nome, String email, String senha, List<Anotacao> viagens) throws Exception {
+	public Usuario(String nome, String email, String senha, List<Anotacao> anotacoes) throws Exception {
 		super();
 		isSetEmail(email);
 		isSetNome(nome);
 		isSetSenha(senha);
-		this.anotacoes = viagens;
+		this.anotacoes = anotacoes;
+	}
+	
+	
+	/**
+	 * Adiciona a nova nota e salva ela no BD.
+	 * @param anotacao
+	 * @param dao
+	 */
+	public void addAnotacao(Anotacao anotacao, GenericDAO dao) {
+		if (contains(anotacao, anotacoes)) {
+			anotacoes.set(anotacoes.indexOf(anotacao), anotacao);
+			dao.merge(anotacao);
+		} else {
+			anotacoes.add(anotacao);
+			dao.persist(anotacao);
+		}
+	}
+	
+	private boolean contains(Anotacao anotacao, List<Anotacao> anotacoes) {
+		for (Anotacao a : anotacoes) {
+			if (a.getCorpo().equals(anotacao.getCorpo())
+					&& a.getId() == anotacao.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public List<Anotacao> getAnotacoes() {
+		return anotacoes;
 	}
 
 	/**
 	 * Metodo a lista de anotações do usuário.
-	 * @param viagens
+	 * @param anotacao
 	 */
-	public void setAnotacoes(List<Anotacao> viagens) {
-		this.anotacoes = viagens;
+	public void setAnotacoes(List<Anotacao> anotacao) {
+		this.anotacoes = anotacao;
 	}
-
+	
 	/**
 	 * Metodo Retorna o Nome do Usuario
 	 * @return String - nome
@@ -198,30 +230,39 @@ public class Usuario {
 		this.senha = String.valueOf(this.hashCode());
 	}
 
+	
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(email, senha);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null || !(obj instanceof Usuario)) {
+		if (obj == null)
 			return false;
-		}
+		if (getClass() != obj.getClass())
+			return false;
 		Usuario other = (Usuario) obj;
 		if (email == null) {
-			if (other.email != null) {
+			if (other.email != null)
 				return false;
-			}
-		} else if (!email.equalsIgnoreCase(other.email)) {
+		} else if (!email.equals(other.email))
 			return false;
-		}
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (senha == null) {
+			if (other.senha != null)
+				return false;
+		} else if (!senha.equals(other.senha))
+			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("|%-40s|%-40s|", nome, email);
