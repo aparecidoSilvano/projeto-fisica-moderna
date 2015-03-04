@@ -148,7 +148,7 @@
 					<textarea name="notas[]" rows="10" cols="30"></textarea>
 					}
 				</div>
-				<input class="btn btn-sm btn-link btn-block-slide" style="width: 90%" type="button" value="Nova anotação"
+				<input class="btn btn-sm btn-link btn-block-slide"type="button" value="Nova anotação"
 					onClick="addInput('dynamicInput', '');">
 				<button class="btn btn-sm btn-primary btn-block-slide" type="submit">Salvar</button>
 			</form>
@@ -161,20 +161,6 @@ function addInput(divName, text){
     document.getElementById(divName).appendChild(newdiv);
 }
 </script>
-
-<style type="text/css">
-textarea {
-	background: repeat center
-		url('@routes.Assets.at("images/paper-background.jpg")');
-	width: 310px;
-	height: 150px;
-	font: normal 14px verdana;
-	line-height: 25px;
-	padding: 2px 10px;
-	border: solid 1px #ddd;
-}
-</style>
-
 
 <h2 style="color: blue; size: 18s">
 							<u>Glossário:</u></h2>
@@ -254,4 +240,34 @@ textarea {
         <br>
         <br>
 </body>
+<style type="text/css">
+textarea {
+	background: repeat center
+		url('@routes.Assets.at("images/paper-background.jpg")');
+	width: 310px;
+	height: 150px;
+	font: normal 14px verdana;
+	line-height: 25px;
+	padding: 2px 10px;
+	border: solid 1px #ddd;
+}
+
+.conteudo {
+	width:98%;
+	margin: 0 auto;
+	display: flex;
+}
+
+.fixed {
+	width:75%;
+	margin-right: 0.8%;
+}
+
+.flex-item {
+	width:25%;
+	height: 750px;
+	overflow-y: auto;
+	flex-grow: 1;
+}
+</style>
 </html>
