@@ -108,7 +108,7 @@ public class AulasController extends Controller {
 			return notas;
 		}
 
-		public void setEmail(List<String> notas) {
+		public void setNotas(List<String> notas) {
 			this.notas = notas;
 		}
 	}
